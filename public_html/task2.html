@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSLT &rarr; MathML &mdash; Задание 2</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    .page-header { background: linear-gradient(135deg, #1e3a8a, #7c3aed); }
+    pre.code-block {
+      background: #0f172a; color: #e2e8f0;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+      font-size: 0.8rem; line-height: 1.6;
+      max-height: 380px; overflow-y: auto; white-space: pre-wrap; word-break: break-all;
+    }
+    .xml-tag     { color: #60a5fa; }
+    .xml-attr    { color: #fbbf24; }
+    .xml-value   { color: #86efac; }
+    .xml-decl    { color: #a78bfa; }
+    .xml-comment { color: #6b7280; font-style: italic; }
+    math { font-size: 1.4em; }
+    .formula-block {
+      background: #f8fafc; border: 1.5px solid #e2e8f0;
+      border-radius: 10px; padding: 2rem; min-height: 80px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+
+<nav class="navbar bg-white border-bottom sticky-top py-2">
+  <div class="container-fluid">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-0">
+        <li class="breadcrumb-item">
+          <a href="index.html"><i class="bi bi-arrow-left me-1"></i>Назад</a>
+        </li>
+        <li class="breadcrumb-item active">Задание 2 &mdash; XSLT &rarr; MathML</li>
+      </ol>
+    </nav>
+  </div>
+</nav>
+
+<div class="page-header text-white text-center py-4">
+  <div class="container">
+    <h1 class="h3 fw-bold mb-1">XSLT-преобразование в MathML</h1>
+  </div>
+</div>
+
+<main class="container-xl py-4 d-flex flex-column gap-4">
+
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold mb-3">Исходный XML</h5>
+          <pre class="code-block rounded-2 p-3 mb-0 flex-grow-1" id="xml-display"></pre>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-bold mb-3">XSLT-таблица стилей</h5>
+          <pre class="code-block rounded-2 p-3 mb-0 flex-grow-1" id="xslt-display"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title fw-bold mb-3">Выполнить преобразование</h5>
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        <button class="btn btn-primary fw-semibold" id="transform-btn">Запустить XSLT &rarr; MathML</button>
+        <span class="text-muted small">XSLTProcessor обработает XML и отрисует формулу &sigma; ниже</span>
+      </div>
+      <div id="error-display" class="mt-3"></div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="card-title fw-bold mb-3">Результат &mdash; среднеквадратическое отклонение &sigma;</h5>
+      <div class="formula-block" id="output-block">
+        <p class="text-muted text-center mb-0">
+          Нажмите кнопку «Запустить XSLT &rarr; MathML» выше, чтобы увидеть результат
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card shadow-sm d-none" id="mathml-source-card">
+    <div class="card-body">
+      <h5 class="card-title fw-bold mb-3">
+        Сгенерированный MathML-код
+      </h5>
+      <pre class="code-block rounded-2 p-3 mb-0" id="mathml-display"></pre>
+    </div>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/task2.js"></script>
+</body>
+</html>
